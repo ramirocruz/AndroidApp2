@@ -64,6 +64,32 @@ public class ProfileActivity extends AppCompatActivity {
 
         }
     };
+    private HashMap<String,Object> testing(){
+        final HashMap<String,Object> hashmap =new HashMap<>();
+        StorageReference storagereference =FirebaseStorage.getInstance().getReference(pathtofirebase);
+
+        for(int i=1;;i++){
+            String path=i+".pdf";
+            final StringBuilder build=new StringBuilder();
+            StorageReference sref=storagereference.child(path);
+            sref.getMetadata().addOnSuccessListener(new OnSuccessListener<StorageMetadata>() {
+                @Override
+                public void onSuccess(StorageMetadata storageMetadata) {
+                 hashmap.put("Name",storageMetadata.getName());
+                    hashmap.put("StorageReference",storageMetadata.getReference());
+                    hashmap.put("Check",storageMetadata.getCustomMetadata("Check"));
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+
+                }
+            });
+            if((hashmap.get("Check").toString()=="last")){
+              break;
+            }
+        }
+    return  hashmap;}
 
     private View.OnClickListener click=new View.OnClickListener() {
         @Override
@@ -149,7 +175,7 @@ public class ProfileActivity extends AppCompatActivity {
          public void onSuccess(StorageMetadata storageMetadata) {
            String string=storageMetadata.getName()+".pdf";
              content.put("Name",string);
-             content.put("url",storageMetadata.getDownloadUrl().toString());
+             content.put("url",storageMetadata.getPath());
          };
      }).addOnFailureListener(new OnFailureListener() {
          @Override
