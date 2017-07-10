@@ -25,7 +25,6 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 
 public class StorageHelperActivity extends AppCompatActivity {
@@ -59,7 +58,7 @@ public class StorageHelperActivity extends AppCompatActivity {
 
             {
 
-// UploadToFirebaseFromFilemanager("Testing");
+
                 UploadToFirebaseFromSelectedApp("Testing2");
 
 
@@ -123,49 +122,57 @@ public class StorageHelperActivity extends AppCompatActivity {
         intent.setType("*/*");
         startActivityForResult(Intent.createChooser(intent, "Upload from ..."), UploadFromSelectApp);
     }
-
-    private void UploadToFirebaseFromFilemanager (String uploadName)
-    {
-        String UploadName = uploadName;
-        Intent intent = new Intent("com.sec.android.app.myfiles.PICK_DATA");
-        intent.putExtra("CONTENT_TYPE", "*/*");
-        intent.addCategory(Intent.CATEGORY_DEFAULT);
-        startActivityForResult(intent, UploadFromFilemanager);
-    }
+//
+//    private void UploadToFirebaseFromFilemanager (String uploadName)
+//    {
+//        String UploadName = uploadName;
+//        Intent intent = new Intent("com.sec.android.app.myfiles.PICK_DATA");
+//        intent.putExtra("CONTENT_TYPE", "*/*");
+//        intent.addCategory(Intent.CATEGORY_DEFAULT);
+//        startActivityForResult(intent, UploadFromFilemanager);
+//    }
 
     public void onActivityResult(int requestCode, int resultCode, Intent intent)
     {
-        if (requestCode == UploadFromFilemanager)
-        {
-            final Uri currFileURI = intent.getData();
-
-            try{
-                Toast.makeText(getApplicationContext(), "Upload file ...", Toast.LENGTH_SHORT).show();
-                String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
-                StorageReference storageReference = FirebaseStorage.getInstance().getReference(pathtofirebaseupload+timeStamp+currFileURI.getLastPathSegment());
-                storageReference.putFile(currFileURI).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        Toast.makeText(getApplicationContext(), "File successfully uploaded..", Toast.LENGTH_SHORT).show();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getApplicationContext(), "Uploading Failed..", Toast.LENGTH_SHORT).show();
-                    }
-                });}catch(Exception e){
-                Toast.makeText(getApplicationContext(),e.toString(),Toast.LENGTH_SHORT).show();
-            }
-        }
+//        if (requestCode == UploadFromFilemanager)
+//        {
+//            final Uri currFileURI = intent.getData();
+//             Toast.makeText(getApplicationContext(),currFileURI.toString()+"  "+currFileURI.getLastPathSegment().toString(),Toast.LENGTH_LONG).show();
+//            try{
+//                Toast.makeText(getApplicationContext(), "Upload file ...", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(),currFileURI.toString()+"  "+currFileURI.getLastPathSegment().toString(),Toast.LENGTH_LONG).show();
+//                String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+//                StorageReference storageReference = FirebaseStorage.getInstance().getReference(pathtofirebaseupload+currFileURI.getLastPathSegment());
+//                storageReference.putFile(currFileURI).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//                    @Override
+//                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//                        Toast.makeText(getApplicationContext(), "File successfully uploaded..", Toast.LENGTH_SHORT).show();
+//                    }
+//                }).addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        Toast.makeText(getApplicationContext(), "Uploading Failed..", Toast.LENGTH_SHORT).show();
+//                    }
+//                });}catch(Exception e){
+//                Toast.makeText(getApplicationContext(),e.toString(),Toast.LENGTH_SHORT).show();
+//            }
+//        }
 
         if (requestCode == UploadFromSelectApp)
         {
             Toast.makeText(getApplicationContext(), "Upload file  selected app...", Toast.LENGTH_SHORT).show();
             final Uri uri = intent.getData();
-
+            //Generating a unique name:
+            String name=uri.getLastPathSegment();                         //Getting the file name
+            String onlyname=name.substring(name.lastIndexOf("."));          //Getting the file name without extension
+            String extension=name.substring(0,name.lastIndexOf("."));        //Getting the rest of the file name
+            java.util.Date date = new java.util.Date();
+            String timestamp=new SimpleDateFormat("_yyyy_MM_dd_HH_mm_ss").format(date); //Getting the current timestamp
+            //Concatenating all the strings to a single entity
+            String finalname=onlyname+timestamp+extension;
 
             try
-            { StorageReference storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(pathtofirebaseupload+uri.getLastPathSegment());
+            { StorageReference storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(pathtofirebaseupload+finalname);
                 storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
