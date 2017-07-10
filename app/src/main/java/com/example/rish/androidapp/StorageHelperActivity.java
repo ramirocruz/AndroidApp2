@@ -59,7 +59,7 @@ public class StorageHelperActivity extends AppCompatActivity {
             {
 
 
-                UploadToFirebaseFromSelectedApp("Testing2");
+                UploadToFirebaseFromSelectedApp("Testing");
 
 
             }
@@ -164,10 +164,11 @@ public class StorageHelperActivity extends AppCompatActivity {
             final Uri uri = intent.getData();
             //Generating a unique name:
             String name=uri.getLastPathSegment();                         //Getting the file name
-            String onlyname=name.substring(name.lastIndexOf("."));          //Getting the file name without extension
-            String extension=name.substring(0,name.lastIndexOf("."));        //Getting the rest of the file name
+            String onlyname=name.substring(0,name.lastIndexOf("."));          //Getting the file name without extension
+            String extension=name.substring(name.lastIndexOf("."));        //Getting the rest of the file name
             java.util.Date date = new java.util.Date();
-            String timestamp=new SimpleDateFormat("_yyyy_MM_dd_HH_mm_ss").format(date); //Getting the current timestamp
+            String timestamp="";
+                    timestamp=new SimpleDateFormat("_yyyy_MM_dd_HH_mm_ss").format(date); //Getting the current timestamp
             //Concatenating all the strings to a single entity
             String finalname=onlyname+timestamp+extension;
 
