@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.rish.androidapp.MainScreenActivity">
+
+
+    <Button
+        android:id="@+id/buttonwebview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="27dp"
+        android:text="List Questions"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/buttondownloads"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="65dp"
+        android:text="List Downloads"
+        android:layout_below="@+id/buttonwebview"
+        android:layout_alignStart="@+id/buttonwebview" />
+
+    <Button
+        android:id="@+id/buttondownload"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttondownloads"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="61dp"
+        android:text="Download " />
+
+    <Button
+        android:id="@+id/buttonsubmit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/buttondownload"
+        android:layout_below="@+id/buttondownload"
+        android:layout_marginTop="72dp"
+        android:text="Submit" />
+</RelativeLayout>
