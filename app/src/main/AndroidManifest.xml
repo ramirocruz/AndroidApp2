@@ -18,14 +18,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
-            android:theme="@style/Full_Screen"/>
-        <activity android:name=".ProfileActivity"/>
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/Full_Screen" />
+        <activity android:name=".ProfileActivity" />
         <activity
             android:name=".WebViewActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="Olympy Web Viewer"
-            android:theme="@style/Full_Screen"/>
+            android:theme="@style/Full_Screen" />
         <activity android:name=".PdfViewerActivity" />
         <activity android:name=".StorageHelperActivity" />
         <activity
@@ -34,7 +35,7 @@
         <activity
             android:name=".IntroOneTimeLauncherActivity"
             android:label="@string/title_activity_intro_one_time_launcher"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SplashScreenActivity"
             android:theme="@style/Splash_Screen">
@@ -44,7 +45,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainScreenActivity"></activity>
+        <activity android:name=".MainScreenActivity" />
+        <activity android:name=".IntermediateActivity"></activity>
     </application>
 
 </manifest>

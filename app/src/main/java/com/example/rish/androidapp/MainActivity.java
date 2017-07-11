@@ -1,5 +1,6 @@
 package com.example.rish.androidapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     private SignInButton signInButton;
     private GoogleApiClient googleApiClient;
     private GoogleSignInOptions googleSignInOptions;
-    private boolean mode_download;  // To check whether to do download or upload
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -170,12 +171,9 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
          if(firebaseUser!=null){
              //This means user is signed in
-             mode_download=getIntent().getBooleanExtra("mode_download",true);// To check whether to do download or upload
-             if(mode_download)
-                 startActivity(new Intent(getApplicationContext(),StorageHelperActivity.class).putExtra("Status",false));
-             else
-                 startActivity(new Intent(getApplicationContext(),StorageHelperActivity.class).putExtra("Status",true));
-              finish();
+
+                 startActivity(new Intent(getApplicationContext(),IntermediateActivity.class).addCategory("Intermediate"));
+                 finish();
          }else
          {//User is signed out
              Toast.makeText(getApplicationContext(),"Signed out",Toast.LENGTH_SHORT).show();

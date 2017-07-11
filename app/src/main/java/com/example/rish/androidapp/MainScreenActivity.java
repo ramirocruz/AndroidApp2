@@ -32,14 +32,14 @@ public class MainScreenActivity extends AppCompatActivity {
 
               break;
           case R.id.buttondownload:
-              startActivity(new Intent(getApplicationContext(),MainActivity.class).putExtra("mode_download",true));
+              startActivity(new Intent(getApplicationContext(),IntermediateActivity.class).putExtra("mode_download",true));
 
               break;
           case R.id.buttondownloads:
               startActivity(new Intent(getApplicationContext(),DownloadListView.class));
               break;
           case R.id.buttonsubmit:
-              startActivity(new Intent(getApplicationContext(),MainActivity.class).putExtra("mode_download",false));
+              startActivity(new Intent(getApplicationContext(),IntermediateActivity.class).putExtra("mode_download",false));
 
 
 
