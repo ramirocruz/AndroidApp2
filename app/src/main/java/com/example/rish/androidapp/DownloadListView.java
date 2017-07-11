@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class DownloadListView extends AppCompatActivity {
     PDFAdapter pdfAdapter,pdfAdapter2;
     ListView questionlistview,solutionlistview;
-    private String extrapath="";
+    private String extrapath="Olympy/";
     private String downloaddirpath;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

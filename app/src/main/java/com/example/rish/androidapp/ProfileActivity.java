@@ -29,7 +29,7 @@ public class ProfileActivity extends AppCompatActivity {
         btnlogout=(Button)findViewById(R.id.logout);
         btnlogout.setOnClickListener(click);
         textView=(TextView)findViewById(R.id.showemail);
-        textView.setText("Pdf list");
+        textView.setText("QUESTION BANK");
 
         listview=(ListView)findViewById(R.id.theListView);
         arraypdf=new PDFAdapterWeb(this,listitemnames);
@@ -66,10 +66,95 @@ public class ProfileActivity extends AppCompatActivity {
 //            startActivity(new Intent(ProfileActivity.this,LoginActivity.class));           //Start the activity LoginActivity     go to login page
         }
     };
+//New links to our database to load webview
+    private final String[] listitemnames={
+            "crmo-2013-solutions-1",
+            "crmo-2013-solutions-2",
+            "crmo-2013-solutions-2 (2)",
+            "crmo-2013-solutions-4",
+            "crmosol-12-1",
+            "crmosol-12-2",
+            "crmosol-12-3",
+            "crmosol-12-4",
+            "solutions-to-rmo-2013-mumbai-region",
+            "solutions-to-rmo-2013-mumbai-region (2)",
+            "inmo-2000",
+            "inmo-2001",
+            "inmo-2002",
+            "inmo-2003",
+            "inmo-2004",
+            "inmo-2005",
+            "inmo-2006",
+            "inmo-2007",
+            "inmo-2008",
+            "inmo-2009",
+            "inmo-2010",
+            "inmo-2011",
+            "inmo-2012",
+            "inmo-2013",
+            "rmo-2000",
+            "rmo-2001",
+            "rmo-2002",
+            "rmo-2003",
+            "rmo-2004",
+            "rmo-2005",
+            "rmo-2006",
+            "rmo-2007",
+            "rmo-2008",
+            "rmo-2009",
+            "rmo-2010",
+            "rmo-2011",
+            "rmo-2012-mumbai-region",
+            "rmo-2013-mumbai-region",
+    };
 
-    private final String[] listitemnames={"1.pdf","2.pdf","3.pdf","4.pdf"};
-    private final String[] listitemurl={"https://drive.google.com/open?id=0ByNmy4jVMfU8S1MtVWI0bDZ5b2M","https://drive.google.com/open?id=0ByNmy4jVMfU8Z0NQTWkwNkQ5TEk"
-    ,"https://drive.google.com/open?id=0ByNmy4jVMfU8RGhnTnVEc0NjcTg","https://drive.google.com/open?id=0ByNmy4jVMfU8X3RPbVVxN3d5UTQ"};
+
+
+
+
+
+
+
+    private final String[] listitemurl={
+            "https://drive.google.com/open?id=0B5sOqfMxLg8uU3ZvdjVfQWtWeW8",
+            "https://drive.google.com/open?id=0B5sOqfMxLg8uNHpZWXotYzBoRjQ",
+            "https://drive.google.com/open?id=0B5sOqfMxLg8uNUkxMTZfazBTZHc",
+            "https://drive.google.com/open?id=0B5sOqfMxLg8uZzlYWTN1TldMOWM",
+            "https://drive.google.com/open?id=0B5sOqfMxLg8uUV8zQllaR0JfbTQ",
+            "https://drive.google.com/open?id=0B5sOqfMxLg8uVVJJc1ZZZVM2cXM",
+            "https://drive.google.com/open?id=0B5sOqfMxLg8uS2VsbENLSVgwTVE",
+            "https://drive.google.com/open?id=0B5sOqfMxLg8uTTNCOG8zSS0xWms",
+            "https://drive.google.com/open?id=0B5sOqfMxLg8uN09VYlpNN2xmT1k",
+            "https://drive.google.com/open?id=0B5sOqfMxLg8uVXhWQ09sV2RaODA",
+            "https://drive.google.com/open?id=0B5sOqfMxLg8ubXVPejh1VHl3YkE",
+            "https://drive.google.com/open?id=0B5sOqfMxLg8uNGU3QVlTWTRObHc",
+            "https://drive.google.com/open?id=0B5sOqfMxLg8uME1HN2l0Vl9qMm8",
+            "https://drive.google.com/open?id=0B5sOqfMxLg8ud1dKOFVFdVowUXM",
+            "https://drive.google.com/open?id=0B5sOqfMxLg8uSG5BSUVoN1JrTjQ",
+            "https://drive.google.com/open?id=0B5sOqfMxLg8uc1BaRkNPU0x4d0k",
+            "https://drive.google.com/open?id=0B5sOqfMxLg8ub2h1SEkzbHVBdkk",
+            "https://drive.google.com/open?id=0B5sOqfMxLg8uVnFHMFVxeHlGazQ",
+            "https://drive.google.com/open?id=0B5sOqfMxLg8uRGJHeEpvVm9fVlk",
+            "https://drive.google.com/open?id=0B5sOqfMxLg8ucHB4S0NWLVVwNkU",
+            "https://drive.google.com/open?id=0B5sOqfMxLg8uTk5sMGxtMlQwdUU",
+            "https://drive.google.com/open?id=0B5sOqfMxLg8uSVJHNnl3ckduWDA",
+            "https://drive.google.com/open?id=0B5sOqfMxLg8uazI3dFU5Y3BIbHc",
+            "https://drive.google.com/open?id=0B5sOqfMxLg8ueUpBV0pjOEZTc2M",
+            "https://drive.google.com/open?id=0B5sOqfMxLg8ubGR6dlJkQ3VPRFE",
+            "https://drive.google.com/open?id=0B5sOqfMxLg8uWjZqc04wZW5CQ2s",
+            "https://drive.google.com/open?id=0B5sOqfMxLg8uWS05bzkxald3b3M",
+            "https://drive.google.com/open?id=0B5sOqfMxLg8uS1RJdzgwZldTeDQ",
+            "https://drive.google.com/open?id=0B5sOqfMxLg8uYVRVZzlqaDFNN00",
+            "https://drive.google.com/open?id=0B5sOqfMxLg8uVkVqQ0trdGtFU2s",
+            "https://drive.google.com/open?id=0B5sOqfMxLg8uSVRFc1lXb3B6emc",
+            "https://drive.google.com/open?id=0B5sOqfMxLg8uSVlaZ0IwTm52VWM",
+            "https://drive.google.com/open?id=0B5sOqfMxLg8uNFdTU0RacWFiRG8",
+            "https://drive.google.com/open?id=0B5sOqfMxLg8uVjNKN29jMUtiSlU",
+            "https://drive.google.com/open?id=0B5sOqfMxLg8uLXlGLTVlZ3lrNlk",
+            "https://drive.google.com/open?id=0B5sOqfMxLg8uZGxWMGgySFNVNDQ",
+            "https://drive.google.com/open?id=0B5sOqfMxLg8udm1qUklNRGVaaUU",
+            "https://drive.google.com/open?id=0B5sOqfMxLg8uakk1ckI1LXpBNnc",
+    };
 }
 
 //    final String pathtofirebase="gs://androidapp-6745a.appspot.com/MathsOlympiad";

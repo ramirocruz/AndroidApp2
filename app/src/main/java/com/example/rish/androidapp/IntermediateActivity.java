@@ -23,7 +23,7 @@ public class IntermediateActivity extends AppCompatActivity {
         FirebaseUser firebaseUser=firebaseAuth.getCurrentUser();
         if(firebaseUser!=null){
             if(mode_download)
-            startActivity(new Intent(getApplicationContext(),StorageHelperActivity.class).putExtra("Status",false));
+            startActivity(new Intent(getApplicationContext(),NewActivity.class));
             else
             startActivity(new Intent(getApplicationContext(),StorageHelperActivity.class).putExtra("Status",true));
             finish();
@@ -37,7 +37,7 @@ public class IntermediateActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode==GOOGLE_REQUEST_CODE){
             if(mode_download)
-                startActivity(new Intent(getApplicationContext(),StorageHelperActivity.class).putExtra("Status",false));
+                startActivity(new Intent(getApplicationContext(),NewActivity.class));
             else
                 startActivity(new Intent(getApplicationContext(),StorageHelperActivity.class).putExtra("Status",true));
             finish();
