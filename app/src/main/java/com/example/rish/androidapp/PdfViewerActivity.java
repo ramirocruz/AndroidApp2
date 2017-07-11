@@ -13,13 +13,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.github.barteksc.pdfviewer.PDFView;
+import com.github.barteksc.pdfviewer.listener.OnLoadCompleteListener;
 
+import java.io.File;
 
 
 public class PdfViewerActivity extends AppCompatActivity {
-    //PDFView pdfView;
+    PDFView pdfView;
+   // ScrollBar scrollBar;
 
-Button buttondownload,buttonupload,buttonlistdownload;
+
 
 
 
@@ -27,35 +31,29 @@ Button buttondownload,buttonupload,buttonlistdownload;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pdf_viewer);
+         pdfView=(PDFView)findViewById(R.id.pdfview);
+        pdfView.setVerticalScrollBarEnabled(true);
+        pdfView.setHorizontalScrollBarEnabled(false);
+        String path=getIntent().getStringExtra("Path");
 
-          buttondownload=(Button)findViewById(R.id.btndownload);
-        buttonupload=(Button)findViewById(R.id.btnupload);
-        buttonlistdownload=(Button)findViewById(R.id.downloadlist);
-        buttonupload.setOnClickListener(click);
-        buttondownload.setOnClickListener(click);
-        buttonlistdownload.setOnClickListener(click);
-
-
-    }
-private View.OnClickListener click =new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        if(v.getId()==R.id.btndownload){
-            startActivity(new Intent(getApplicationContext(),StorageHelperActivity.class).putExtra("Name","1").putExtra("Status",false));
+        File file=new File(path);
+        if(file.canRead())
+        {
+            //LOAD IT
+            pdfView.fromFile(file).defaultPage(1).onLoad(new OnLoadCompleteListener() {
+                @Override
+                public void loadComplete(int nbPages) {
+                    Toast.makeText(getApplicationContext(), String.valueOf(nbPages), Toast.LENGTH_SHORT).show();
+                }
+            }).load();
         }
-        else
-            if(v.getId()==R.id.btnupload){
-            startActivity(new Intent(getApplicationContext(),StorageHelperActivity.class).putExtra("Name","1").putExtra("Status",true));
-        }else
-            {
-                startActivity(new Intent(getApplicationContext(),DownloadListView.class));
-            }
+    }
+
 
     }
-};
 
 
 
 
 
-}
+

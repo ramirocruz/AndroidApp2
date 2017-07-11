@@ -5,39 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.rish.androidapp.PdfViewerActivity">
-  <TextView
+  <com.github.barteksc.pdfviewer.PDFView
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:text="Download Activity"
-      android:id="@+id/textView" />
-
-    <Button
-        android:id="@+id/btndownload"
+      android:layout_height="match_parent"
+      android:id="@+id/pdfview">
+  </com.github.barteksc.pdfviewer.PDFView>
+   <!-- <com.github.barteksc.pdfviewer.scroll.DefaultScrollHandle
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView"
-        android:layout_marginStart="131dp"
-        android:layout_marginTop="31dp"
-        android:text="Download" />
-
-    <Button
-        android:id="@+id/btnupload"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/btndownload"
-        android:layout_below="@+id/btndownload"
-        android:layout_marginTop="123dp"
-        android:text="Upload" />
-
-  <Button
-      android:id="@+id/downloadlist"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_alignEnd="@+id/btndownload"
-      android:layout_alignParentBottom="true"
-      android:layout_marginBottom="37dp"
-      android:text="List Downloads" />
-
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView"
+        ></com.github.barteksc.pdfviewer.scroll.DefaultScrollHandle>
+        -->
 
 </RelativeLayout>
