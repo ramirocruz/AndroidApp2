@@ -84,11 +84,11 @@ public class PDFAdapter extends BaseAdapter {
 
     private void openPDFView(String path)        //To open a pdf viewer activity with a path
     {
-       Toast.makeText(context, "You Clicked", Toast.LENGTH_SHORT).show();
+    //   Toast.makeText(context, "You Clicked", Toast.LENGTH_SHORT).show();
 //      TODO : build pdf viewer activity
-//        Intent intent=new Intent(context,PdfViewerActivity.class);
-//        intent.putExtra("Path",path);
-//        context.startActivity(intent);
+        Intent intent=new Intent(context,PdfViewerActivity.class);
+       intent.putExtra("Path",path);
+       context.startActivity(intent);
     }
 
 

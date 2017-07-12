@@ -8,9 +8,21 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.rish.androidapp.IntroOneTimeLauncherActivity$PlaceholderFragment">
 
-    <TextView
-        android:id="@+id/section_label"
+   <TextView
+       android:id="@+id/section_label"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+       android:text="A dream doesn't become reality\n though magic; it takes sweat,\n determination and hard work.\n\n ~Collin Powell"
+       android:textStyle="bold|italic"
+       android:textSize="20sp"
+       android:textColor="#FFFF"
+
+
+        />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/introimageview"/>
 
 </RelativeLayout>

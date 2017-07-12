@@ -57,7 +57,7 @@ public class StorageHelperActivity extends AppCompatActivity {
 
 
             {
-
+                Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
 
                 UploadToFirebaseFromSelectedApp("Testing");
 
