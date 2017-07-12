@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context="com.example.rish.androidapp.MainScreenActivity">
 
-
+<!--
     <Button
         android:id="@+id/buttonwebview"
         android:layout_width="match_parent"
@@ -42,4 +43,71 @@
         android:layout_below="@+id/buttondownload"
         android:layout_marginTop="72dp"
         android:text="Submit" />
-</RelativeLayout>
+        -->
+
+
+
+
+        <Button
+            android:id="@+id/buttonintroduction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="115dp"
+            android:background="#FFD700"
+            android:text="Introduction"
+            android:textColor="#000000"
+            android:textAllCaps="false"
+            android:textSize="24sp"
+            android:textStyle="bold|italic"
+            />
+
+        <Button
+            android:id="@+id/buttonsyllabus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/buttonintroduction"
+            android:layout_below="@+id/buttonintroduction"
+            android:layout_marginTop="30dp"
+            android:background="#FFD700"
+            android:textColor="#000000"
+            android:text="Syllabus"
+            android:textAllCaps="false"
+            android:textSize="24sp"
+            android:textStyle="bold|italic"
+            />
+
+        <Button
+            android:id="@+id/buttonquestionpapers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/buttonsyllabus"
+            android:layout_marginTop="30dp"
+            android:background="#FFD700"
+            android:textColor="#000000"
+            android:text="Previous Years"
+            android:textAllCaps="false"
+            android:textSize="24sp"
+            android:textStyle="bold|italic"
+            />
+
+        <Button
+            android:id="@+id/buttonbooks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/buttonquestionpapers"
+            android:layout_marginTop="30dp"
+            android:background="#FFD700"
+            android:textColor="#000000"
+            android:text="Books"
+            android:textAllCaps="false"
+            android:textSize="24sp"
+            android:textStyle="bold|italic"
+            />
+
+    </RelativeLayout>
+
+

@@ -17,14 +17,14 @@ public class DownloadListView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_download_list_view);
-//        Toast.makeText(getApplicationContext(),"Done1",Toast.LENGTH_SHORT).show();
+
         questionlistview=(ListView)findViewById(R.id.downloadquestionlistview);
-        solutionlistview=(ListView)findViewById(R.id.downloadsolutionlistview);
+
         pdfAdapter=new PDFAdapter(this,getPDFs());
-        pdfAdapter2=new PDFAdapter(this,getPDFs(),false);
+
         questionlistview.setAdapter(pdfAdapter);
-        solutionlistview.setAdapter(pdfAdapter2);
-//        Toast.makeText(getApplicationContext(),"Done",Toast.LENGTH_SHORT).show();
+
+
     }
 
 

@@ -10,21 +10,39 @@
   <com.google.android.gms.common.SignInButton
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginStart="125dp"
-      android:layout_marginTop="128dp"
-      android:layout_alignParentTop="true"
-      android:layout_alignParentStart="true"
-      android:id="@+id/signInButton"></com.google.android.gms.common.SignInButton>
-
+      android:id="@+id/signInButton"
+      android:layout_above="@+id/textView"
+      android:layout_centerHorizontal="true"
+      android:layout_marginBottom="82dp"></com.google.android.gms.common.SignInButton>
+ <TextView
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:text="Firebase Authentication"
+     android:textSize="20sp"
+     android:textAlignment="center"
+     android:layout_alignParentTop="true"
+     android:layout_centerHorizontal="true"
+     android:layout_marginTop="70dp" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/signInButton"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="111dp"
         android:textAlignment="center"
         android:text="Please Sign in to proceed.."
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="96dp"
+        android:id="@+id/textView" />
+
+  <ImageView
+      android:id="@+id/imageViewfirebase"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_above="@+id/signInButton"
+      android:layout_centerHorizontal="true"
+      android:layout_marginBottom="40dp"
+      android:layout_marginTop="110dp"
+      app:srcCompat="@drawable/firebase" />
 
 
 </RelativeLayout>

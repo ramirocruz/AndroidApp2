@@ -5,16 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.rish.androidapp.PdfViewerActivity">
+
+
+  <!--
   <com.github.barteksc.pdfviewer.PDFView
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:id="@+id/pdfview">
   </com.github.barteksc.pdfviewer.PDFView>
-   <!-- <com.github.barteksc.pdfviewer.scroll.DefaultScrollHandle
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:id="@+id/scrollView"
-        ></com.github.barteksc.pdfviewer.scroll.DefaultScrollHandle>
+
         -->
 
 </RelativeLayout>

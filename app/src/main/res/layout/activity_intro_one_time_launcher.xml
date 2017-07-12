@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:background="@drawable/bckgnd2"
     tools:context="com.example.rish.androidapp.IntroOneTimeLauncherActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -39,6 +40,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        app:srcCompat="@android:drawable/ic_menu_more" />
 
 </android.support.design.widget.CoordinatorLayout>

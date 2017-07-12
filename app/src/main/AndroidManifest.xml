@@ -13,21 +13,22 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Full_Screen" />
+            android:theme="@style/Full_Screen_withBG" />
         <activity android:name=".ProfileActivity" />
         <activity
             android:name=".WebViewActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="Olympy Web Viewer"
             android:theme="@style/Full_Screen" />
-        <activity android:name=".PdfViewerActivity" />
+        <activity android:name=".PdfViewerActivity"
+            android:theme="@style/Full_Screen"/>
         <activity android:name=".StorageHelperActivity" />
         <activity
             android:name=".DownloadListView"
@@ -36,9 +37,8 @@
             android:name=".IntroOneTimeLauncherActivity"
             android:label="@string/title_activity_intro_one_time_launcher"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".SplashScreenActivity"
-            android:theme="@style/Splash_Screen">
+        <activity android:name=".SplashScreenActivity"
+            android:theme="@style/Full_Screen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -46,8 +46,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainScreenActivity" />
-        <activity android:name=".IntermediateActivity"></activity>
-        <activity android:name=".NewActivity"></activity>
+        <activity android:name=".IntermediateActivity" />
+        <activity android:name=".NewActivity" />
+        <activity android:name=".SyllabusActivity" />
+        <activity android:name=".IntroActivity" />
+        <activity android:name=".PreviousYearActivity" />
+        <activity android:name=".BooksActivity"></activity>
     </application>
 
 </manifest>

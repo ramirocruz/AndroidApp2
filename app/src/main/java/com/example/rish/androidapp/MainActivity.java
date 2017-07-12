@@ -172,11 +172,11 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
          if(firebaseUser!=null){
              //This means user is signed in
 
-                 startActivity(new Intent(getApplicationContext(),IntermediateActivity.class));
+                 startActivity(new Intent(getApplicationContext(),IntermediateActivity.class).putExtra("LoginStatus",true));
                  finish();
          }else
          {//User is signed out
-             Toast.makeText(getApplicationContext(),"Signed out 324",Toast.LENGTH_SHORT).show();
+             Toast.makeText(getApplicationContext(),"Cannot Sign in",Toast.LENGTH_SHORT).show();
 
             }}
 

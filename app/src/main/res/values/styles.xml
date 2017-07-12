@@ -3,26 +3,30 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/colorBlack</item>
+        <item name="colorPrimaryDark">@color/colorBlack</item>
+        <item name="colorAccent">@color/colorBlack</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
+
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
     <style name="Splash_Screen" parent="AppTheme.NoActionBar">
         <item name="android:windowBackground">@drawable/splashscreen</item>
+
     </style>
     <style name="Full_Screen" parent="AppTheme.NoActionBar">
 
+
     </style>
     <style name="Full_Screen_withBG" parent="AppTheme.NoActionBar">
-        <item name="android:windowBackground">@drawable/splashscreen</item>
+
+        <item name="android:windowBackground">@drawable/gsign</item>
     </style>
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 

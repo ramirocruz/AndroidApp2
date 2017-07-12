@@ -7,19 +7,19 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainScreenActivity extends AppCompatActivity {
-    Button buttonwebview,buttonlistdownloads,buttondownload,buttonsubmit;
+    Button buttonintroduction,buttonsyllabus,buttonquestionpapers,buttonbooks;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
-        buttondownload=(Button)findViewById(R.id.buttondownload);
-        buttonlistdownloads=(Button)findViewById(R.id.buttondownloads);
-        buttonwebview=(Button)findViewById(R.id.buttonwebview);
-        buttonsubmit=(Button)findViewById(R.id.buttonsubmit);
-        buttonsubmit.setOnClickListener(clickobject);
-        buttondownload.setOnClickListener(clickobject);
-        buttonlistdownloads.setOnClickListener(clickobject);
-        buttonwebview.setOnClickListener(clickobject);
+        buttonintroduction=(Button)findViewById(R.id.buttonintroduction);
+       buttonsyllabus=(Button)findViewById(R.id.buttonsyllabus);
+        buttonquestionpapers=(Button)findViewById(R.id.buttonquestionpapers);
+       buttonbooks=(Button)findViewById(R.id.buttonbooks);
+       buttonbooks.setOnClickListener(clickobject);
+        buttonintroduction.setOnClickListener(clickobject);
+        buttonsyllabus.setOnClickListener(clickobject);
+        buttonquestionpapers.setOnClickListener(clickobject);
     }
 
     private View.OnClickListener clickobject=new View.OnClickListener() {
@@ -27,19 +27,19 @@ public class MainScreenActivity extends AppCompatActivity {
         public void onClick(View v) {
       switch(v.getId()){
 
-          case R.id.buttonwebview:
-              startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
+          case R.id.buttonintroduction:
+              startActivity(new Intent(getApplicationContext(),IntroActivity.class));
 
               break;
-          case R.id.buttondownload:
-              startActivity(new Intent(getApplicationContext(),IntermediateActivity.class).putExtra("mode_download",true));
+          case R.id.buttonsyllabus:
+              startActivity(new Intent(getApplicationContext(),SyllabusActivity.class));
 
               break;
-          case R.id.buttondownloads:
-              startActivity(new Intent(getApplicationContext(),DownloadListView.class));
+          case R.id.buttonquestionpapers:
+              startActivity(new Intent(getApplicationContext(),PreviousYearActivity.class));
               break;
-          case R.id.buttonsubmit:
-              startActivity(new Intent(getApplicationContext(),IntermediateActivity.class).putExtra("mode_download",false));
+          case R.id.buttonbooks:
+              startActivity(new Intent(getApplicationContext(),BooksActivity.class));
 
 
 

@@ -12,21 +12,22 @@ import com.google.firebase.auth.FirebaseUser;
 public class IntermediateActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     private final static int GOOGLE_REQUEST_CODE=121;
-    boolean mode_download;
 
+    final boolean mode_download[]=new boolean[1];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        boolean mode_download=getIntent().getBooleanExtra("mode_download",true);
-       // setContentView(R.layout.activity_splash_screen);
+          mode_download[0]=getIntent().getBooleanExtra("mode_download",true);
+
         firebaseAuth=FirebaseAuth.getInstance();
         FirebaseUser firebaseUser=firebaseAuth.getCurrentUser();
         if(firebaseUser!=null){
-            if(mode_download)
-            startActivity(new Intent(getApplicationContext(),NewActivity.class));
-            else
-            startActivity(new Intent(getApplicationContext(),StorageHelperActivity.class).putExtra("Status",true));
-            finish();
+            if(mode_download[0]){
+                startActivity(new Intent(getApplicationContext(),NewActivity.class).putExtra("Status",false));
+                finish();}
+            else{
+                startActivity(new Intent(getApplicationContext(),StorageHelperActivity.class).putExtra("Status",true));
+                finish();}
         }else{
             startActivityForResult(new Intent(getApplicationContext(),MainActivity.class),GOOGLE_REQUEST_CODE);
         }
@@ -35,16 +36,23 @@ public class IntermediateActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode==GOOGLE_REQUEST_CODE){
-            if(mode_download)
-                startActivity(new Intent(getApplicationContext(),NewActivity.class));
-            else
+
+        if(requestCode==GOOGLE_REQUEST_CODE ){
+            if(resultCode==GOOGLE_REQUEST_CODE){
+            if(mode_download[0]){
+                startActivity(new Intent(getApplicationContext(),NewActivity.class).putExtra("Status",false));
+                finish();}
+            else{
                 startActivity(new Intent(getApplicationContext(),StorageHelperActivity.class).putExtra("Status",true));
-            finish();
+                finish();}}
+            else{
+                startActivity(new Intent(getApplicationContext(),PreviousYearActivity.class));
+                finish();
+            }
         }
         else{
             Toast.makeText(getApplicationContext(),"Something went wrong",Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(getApplicationContext(),MainScreenActivity.class));
+            startActivity(new Intent(getApplicationContext(),PreviousYearActivity.class));
             finish();
         }
     }

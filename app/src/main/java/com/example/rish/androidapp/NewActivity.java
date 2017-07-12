@@ -1,44 +1,63 @@
 package com.example.rish.androidapp;
 
-import android.app.ProgressDialog;
+
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
+
 import android.widget.ListView;
-import android.widget.TextView;
+
 import android.widget.Toast;
 
-public class NewActivity extends AppCompatActivity {
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+public class NewActivity extends AppCompatActivity {
+//    private DatabaseReference databaseReference,namelistDB,urllistDB;
     ListView listview;
     PDFAdapterWeb arraypdf;
-    //
-    TextView textView;
-    ProgressDialog progressDialog;
-    Button btnlogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new);
-        btnlogout=(Button)findViewById(R.id.logout);
-        btnlogout.setOnClickListener(click);
-        textView=(TextView)findViewById(R.id.showemail);
-        textView.setText("Pdf list");
-
-        listview=(ListView)findViewById(R.id.theListView);
-        arraypdf=new PDFAdapterWeb(this,listitemnames);
-        list();
-
-    }
-    private void list() {
-
+//        databaseReference= FirebaseDatabase.getInstance().getReference("https://androidapp-6745a.firebaseio.com/MathsOlympiad");
+//        namelistDB=databaseReference.child("name_list");
+//        urllistDB=databaseReference.child("url_list");
+//        final String[][] namesurl=new String[2][];
+//        namelistDB.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                namesurl[0]=(String[])dataSnapshot.getValue();
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
+//        urllistDB.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                namesurl[1]=(String[])dataSnapshot.getValue();
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
+//        String[] names=namesurl[0];
+//        String[] url=namesurl[1];
+//
+//        listview=(ListView)findViewById(R.id.theListView);
+//        arraypdf=new PDFAdapterWeb(this,listitemnames);
 
         listview.setAdapter(arraypdf);
         listview.setOnItemClickListener(itemclick);
@@ -46,27 +65,19 @@ public class NewActivity extends AppCompatActivity {
     private AdapterView.OnItemClickListener itemclick=new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            //Toast.makeText(ProfileActivity.this,position+"  "+id+" "+listitemurl[position],Toast.LENGTH_SHORT).show();
+
             Intent urlintent=new Intent(NewActivity.this,StorageHelperActivity.class);
             urlintent.putExtra("Name",listitemnames[position]);
             urlintent.putExtra("Status",false);
-            try{startActivity(urlintent);}catch (Exception e){
-                Toast.makeText(NewActivity.this,"Here" + e.toString(),Toast.LENGTH_LONG).show();
+
+            try{
+                startActivity(urlintent);
+                 }catch (Exception e){
+                Toast.makeText(NewActivity.this,e.toString(),Toast.LENGTH_LONG).show();
             }
         }
     };
 
-    private View.OnClickListener click=new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Toast.makeText(NewActivity.this,"Button Pressed",Toast.LENGTH_SHORT).show();
-//            progressDialog.setMessage("Signing out...");
-//            progressDialog.show();                                              // show the loading sign
-//           // firebaseAuth.signOut();        //Sign out the firebase
-//            finish();                     //End the current activity
-//            startActivity(new Intent(ProfileActivity.this,LoginActivity.class));           //Start the activity LoginActivity     go to login page
-        }
-    };
 
     private final String[] listitemnames={
             "crmo-2013-solutions-1",

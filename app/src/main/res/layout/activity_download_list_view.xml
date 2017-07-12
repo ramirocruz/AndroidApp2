@@ -4,30 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/rowbg"
     tools:context="com.example.rish.androidapp.DownloadListView">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Questions:"
-        android:id="@+id/textView2" />
 
     <ListView
         android:id="@+id/downloadquestionlistview"
         android:layout_width="wrap_content"
         android:layout_height="230dp"
-        android:layout_below="@+id/textView2"></ListView>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Solutions"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/downloadquestionlistview"
-        android:id="@+id/textView3" />
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/downloadsolutionlistview"
-        android:layout_below="@+id/textView3">
-    </ListView>
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"></ListView>
 
 </RelativeLayout>
