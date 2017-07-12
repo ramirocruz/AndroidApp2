@@ -31,8 +31,9 @@ import java.text.SimpleDateFormat;
 public class StorageHelperActivity extends AppCompatActivity {
     static final int UploadFromSelectApp = 9501;
     static final int UploadFromFilemanager = 9502;
-
+    final String pathtofirebaseroot = "gs://androidapp-6745a.appspot.com/";
     final String pathtofirebase = "gs://androidapp-6745a.appspot.com/MathsOlympiad/";
+
     final String pathtofirebaseupload = "gs://androidapp-6745a.appspot.com/MathsOlympiadUpload/";
     private static String downloaddirpath = "/storage/emulated/0/Olympy/";
     private  String name;
@@ -58,9 +59,9 @@ public class StorageHelperActivity extends AppCompatActivity {
 
 
             {
-                Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
 
-                UploadToFirebaseFromSelectedApp("Testing");
+
+                UploadToFirebaseFromSelectedApp("Uploading");
 
 
             }
@@ -69,7 +70,7 @@ public class StorageHelperActivity extends AppCompatActivity {
         else{
             Toast.makeText(getApplicationContext(),"Error No internet connection",Toast.LENGTH_SHORT).show();
         }
-        finish();
+
     }
 
     private void DownloadFromFirebaseFromPath(final String downloadPathTo,final String downloadPathFrom) {
@@ -176,7 +177,9 @@ public class StorageHelperActivity extends AppCompatActivity {
             String onlyname="",extension="";
 try{             onlyname = name.substring(0, name.lastIndexOf("."));          //Getting the file name without extension
              extension = name.substring(name.lastIndexOf("."));                //Getting the rest of the file name
-              }catch (Exception e){}
+              }catch (Exception e){
+    Toast.makeText(getApplicationContext(),"Please select from Media or File explorer for better result",Toast.LENGTH_LONG).show();
+}
 
             java.util.Date date = new java.util.Date();
             String timestamp = "";
