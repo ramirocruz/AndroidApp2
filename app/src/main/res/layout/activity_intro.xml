@@ -16,18 +16,13 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:baselineAligned="false">
+            android:baselineAligned="true">
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="360dp"
-                android:layout_height="280dp"
-                android:layout_marginTop="555dp"
-                android:src="@drawable/stages" />
+
 
             <TextView
                 android:id="@+id/textViewIntroduction"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -37,9 +32,37 @@
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 android:textStyle="bold|italic"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="26dp"
                 android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true" />
+                android:layout_centerHorizontal="true"
+                android:padding="20dp"/>
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="400dp"
+                android:layout_height="380dp"
+                android:padding="20dp"
+                android:src="@drawable/stages"
+                android:layout_below="@+id/textViewIntroduction"
+                android:layout_alignParentEnd="true"
+                />
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text=""
+                android:textAlignment="textStart"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold|italic"
+                android:padding="20dp"
+                android:layout_below="@+id/textViewIntroduction"
+                android:layout_alignStart="@+id/textViewIntroduction"
+                android:layout_marginTop="336dp" />
 
         </RelativeLayout>
     </ScrollView>

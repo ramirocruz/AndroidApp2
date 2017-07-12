@@ -56,8 +56,8 @@ public class NewActivity extends AppCompatActivity {
 //        String[] names=namesurl[0];
 //        String[] url=namesurl[1];
 //
-//        listview=(ListView)findViewById(R.id.theListView);
-//        arraypdf=new PDFAdapterWeb(this,listitemnames);
+        listview=(ListView)findViewById(R.id.theListView);
+        arraypdf=new PDFAdapterWeb(this,listitemnames);
 
         listview.setAdapter(arraypdf);
         listview.setOnItemClickListener(itemclick);

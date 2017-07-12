@@ -24,9 +24,8 @@
                 android:layout_marginTop="40dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:text="The syllabus for Mathematical Olympiad (regional, national and international) is pre-degree college mathematics. The areas covered are arithmetic of integers, geometry, quadratic equations and expressions, trigonometry, co-ordinate geometry, system of linear equations, permutations and combination, factorization of polynomial, inequalities, elementary combinatorics, probability theory and number theory, finite series and complex numbers and elementary graph theory.
-The syllabus does not include calculus and statistics. The major areas from which problems are given are algebra, combinatorics, geometry and number theory . The syllabus is in a sense spread over Class XI to Class XII levels, but the problems under each topic involve high level of difficulty and sophistication. The difficulty level increases from RMO to INMO to IMO." />
-
+                android:padding="10dp"
+                />
         </RelativeLayout>
     </ScrollView>
 

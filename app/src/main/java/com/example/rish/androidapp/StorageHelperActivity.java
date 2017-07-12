@@ -3,6 +3,7 @@ package com.example.rish.androidapp;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
@@ -47,7 +48,7 @@ public class StorageHelperActivity extends AppCompatActivity {
         name=getIntent().getStringExtra("Name");
         status=getIntent().getBooleanExtra("Status",false);
         String path=pathtofirebase+name+extention;
-        if(isNetworkAvaliable(getApplicationContext())) {
+      if(isNetworkAvaliable(getApplicationContext())) {
             if (!status) {
 
                 DownloadFromFirebaseFromPath(downloaddirpath, path);
@@ -68,51 +69,56 @@ public class StorageHelperActivity extends AppCompatActivity {
         else{
             Toast.makeText(getApplicationContext(),"Error No internet connection",Toast.LENGTH_SHORT).show();
         }
+        finish();
     }
 
-    private void DownloadFromFirebaseFromPath(String downloadPathTo, String downloadPathFrom) {
-        dir.mkdirs();
-        final String DownloadPathTo = downloadPathTo;
-        final String DownloadPathFrom = downloadPathFrom;
-        final StorageReference storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(DownloadPathFrom);
+    private void DownloadFromFirebaseFromPath(final String downloadPathTo,final String downloadPathFrom) {
 
 
-        Toast.makeText(getApplicationContext(), "Download file ...", Toast.LENGTH_SHORT).show();
 
-        File file = new File(DownloadPathTo + name + DownloadPathFrom.substring(DownloadPathFrom.lastIndexOf('.')));
-        final int flag[]=new int[1];flag[0]=1;
-        if (file.exists()) {
-            final File tempfile=file;
-            storageReference.getMetadata().addOnSuccessListener(new OnSuccessListener<StorageMetadata>() {
-                @Override
-                public void onSuccess(StorageMetadata storageMetadata) {
-                    if( storageMetadata.getSizeBytes()==tempfile.getTotalSpace()){
-                        Toast.makeText(getApplicationContext(),"File already exists",Toast.LENGTH_SHORT).show();
-                    }
-                    else
-                        flag[0]=0;
+                dir.mkdirs();
+                final String DownloadPathTo = downloadPathTo;
+                final String DownloadPathFrom = downloadPathFrom;
+                final StorageReference storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(DownloadPathFrom);
+
+
+                Toast.makeText(getApplicationContext(), "Download file ...", Toast.LENGTH_SHORT).show();
+
+                File file = new File(DownloadPathTo + name + DownloadPathFrom.substring(DownloadPathFrom.lastIndexOf('.')));
+                final int flag[] = new int[1];
+                flag[0] = 1;
+                if (file.exists()) {
+                    final File tempfile = file;
+                    storageReference.getMetadata().addOnSuccessListener(new OnSuccessListener<StorageMetadata>() {
+                        @Override
+                        public void onSuccess(StorageMetadata storageMetadata) {
+                            if (storageMetadata.getSizeBytes() == tempfile.getTotalSpace()) {
+                                Toast.makeText(getApplicationContext(), "File already exists", Toast.LENGTH_SHORT).show();
+                            } else
+                                flag[0] = 0;
+                        }
+                    });
+                    if (flag[0] == 0)
+                        file.delete();
                 }
-            });
-            if(flag[0]==0)
-                file.delete();
-        }
-        try {
-            storageReference.getFile(file).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                    Toast.makeText(getApplicationContext(), "Download completed", Toast.LENGTH_SHORT).show();
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
+                try {
+                    storageReference.getFile(file).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                            Toast.makeText(getApplicationContext(), "Download completed", Toast.LENGTH_SHORT).show();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(getApplicationContext(), "Download Failure : " + e.toString(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+
+                } catch (Exception e) {
                     Toast.makeText(getApplicationContext(), "Download Failed : " + e.toString(), Toast.LENGTH_SHORT).show();
                 }
-            });
 
-
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "Download Failed : " + e.toString(), Toast.LENGTH_SHORT).show();
-        }
     }
 
     private void UploadToFirebaseFromSelectedApp (String uploadName)
@@ -120,7 +126,10 @@ public class StorageHelperActivity extends AppCompatActivity {
         String UploadName = uploadName;
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("*/*");
-        startActivityForResult(Intent.createChooser(intent, "Upload from ..."), UploadFromSelectApp);
+       // Toast.makeText(getApplicationContext(),"Please select from apps provided",Toast.LENGTH_LONG).show();
+       try{ startActivityForResult(Intent.createChooser(intent, "Upload from ..."), UploadFromSelectApp);}catch(Exception e){
+           Toast.makeText(getApplicationContext(),e.toString(),Toast.LENGTH_LONG).show();
+       }
     }
 //
 //    private void UploadToFirebaseFromFilemanager (String uploadName)
@@ -163,17 +172,20 @@ public class StorageHelperActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Upload file  selected app...", Toast.LENGTH_SHORT).show();
             final Uri uri = intent.getData();
             //Generating a unique name:
-            String name=uri.getLastPathSegment();                         //Getting the file name
-            String onlyname=name.substring(0,name.lastIndexOf("."));          //Getting the file name without extension
-            String extension=name.substring(name.lastIndexOf("."));        //Getting the rest of the file name
-            java.util.Date date = new java.util.Date();
-            String timestamp="";
-                    timestamp=new SimpleDateFormat("_yyyyMMddHHmmss").format(date); //Getting the current timestamp
-            //Concatenating all the strings to a single entity
-            String finalname=onlyname+timestamp+extension;
+            String name = uri.getLastPathSegment();//Getting the file name
+            String onlyname="",extension="";
+try{             onlyname = name.substring(0, name.lastIndexOf("."));          //Getting the file name without extension
+             extension = name.substring(name.lastIndexOf("."));                //Getting the rest of the file name
+              }catch (Exception e){}
 
-            try
-            { StorageReference storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(pathtofirebaseupload+finalname);
+            java.util.Date date = new java.util.Date();
+            String timestamp = "";
+            timestamp = new SimpleDateFormat("_yyyyMMddHHmmss").format(date); //Getting the current timestamp
+            //Concatenating all the strings to a single entity
+            String finalname = onlyname + timestamp + extension;
+
+            try {
+                StorageReference storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(pathtofirebaseupload + finalname);
                 storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -192,13 +204,14 @@ public class StorageHelperActivity extends AppCompatActivity {
                 });
 
 
-
             } catch (Exception e) {
-                Toast.makeText(getApplicationContext(),e.toString(),Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();
+
             }
 
-
         }
+
+
 
 
         super.onActivityResult(requestCode, resultCode, intent);

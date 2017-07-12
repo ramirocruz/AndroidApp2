@@ -34,9 +34,11 @@ public class PreviousYearActivity extends AppCompatActivity implements View.OnCl
                 break;
             case R.id.buttonDownload:
                 startActivity(new Intent(getApplicationContext(),IntermediateActivity.class).putExtra("mode_download",true));
+                finish();
                 break;
             case R.id.buttonSubmit:
                 startActivity(new Intent(getApplicationContext(),IntermediateActivity.class).putExtra("mode_download",false));
+                finish();
         }
 
     }
